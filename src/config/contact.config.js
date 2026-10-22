@@ -23,9 +23,9 @@ export const AGENCY = {
 };
 
 export const CONTACT = {
-  phone: "+91 756 1042 221",
-  phoneRaw: "+917561042221",
-  whatsapp: "+917561042221",
+  phone: "+91 98765 43210",
+  phoneRaw: "+919876543210",
+  whatsapp: "+919876543210",
   email: "hello@digimarket.in",
   address: "Kuthuparamba, Kannur, Kerala, India",
   location: "Kuthuparamba, Kannur, Kerala",
@@ -34,9 +34,9 @@ export const CONTACT = {
 };
 
 export const SOCIAL = {
-  instagram: "https://instagram.com/digimarket",
-  linkedin: "https://linkedin.com/company/digimarket",
-  facebook: "https://facebook.com/digimarket",
+  instagram: "https://instagram.com",
+  linkedin: "https://linkedin.com",
+  facebook: "https://facebook.com",
   whatsapp: `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
     "Hi DigiMarket, I would like to discuss a project."
   )}`,

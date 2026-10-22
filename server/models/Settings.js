@@ -31,17 +31,17 @@ const settingsSchema = new mongoose.Schema(
     },
     contactPhone: {
       type: String,
-      default: '+91 756 1042 221',
+      default: '+91 98765 43210',
       trim: true,
     },
     contactPhoneRaw: {
       type: String,
-      default: '+917561042221',
+      default: '+919876543210',
       trim: true,
     },
     whatsappNumber: {
       type: String,
-      default: '+917561042221',
+      default: '+919876543210',
       trim: true,
     },
     whatsappMessage: {
@@ -66,17 +66,17 @@ const settingsSchema = new mongoose.Schema(
     },
     socialInstagram: {
       type: String,
-      default: 'https://instagram.com/digimarket',
+      default: 'https://instagram.com',
       trim: true,
     },
     socialLinkedin: {
       type: String,
-      default: 'https://linkedin.com/company/digimarket',
+      default: 'https://linkedin.com',
       trim: true,
     },
     socialFacebook: {
       type: String,
-      default: 'https://facebook.com/digimarket',
+      default: 'https://facebook.com',
       trim: true,
     },
     footerCopyright: {

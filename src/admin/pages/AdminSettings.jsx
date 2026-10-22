@@ -39,16 +39,16 @@ export default function AdminSettings() {
         tagline: settings.tagline || 'Digital Engineering for Businesses That Want to Grow',
         businessDescription: settings.businessDescription || '',
         contactEmail: settings.contactEmail || 'hello@digimarket.in',
-        contactPhone: settings.contactPhone || '+91 756 1042 221',
-        contactPhoneRaw: settings.contactPhoneRaw || '+917561042221',
-        whatsappNumber: settings.whatsappNumber || '+917561042221',
+        contactPhone: settings.contactPhone || '+91 98765 43210',
+        contactPhoneRaw: settings.contactPhoneRaw || '+919876543210',
+        whatsappNumber: settings.whatsappNumber || '+919876543210',
         whatsappMessage: settings.whatsappMessage || 'Hi DigiMarket, I would like to discuss a project.',
         address: settings.address || 'Kuthuparamba, Kannur, Kerala, India',
         location: settings.location || 'Kuthuparamba, Kannur, Kerala',
         businessHours: settings.businessHours || 'Mon – Sat: 9:00 AM – 7:00 PM IST',
-        socialInstagram: settings.socialInstagram || 'https://instagram.com/digimarket',
-        socialLinkedin: settings.socialLinkedin || 'https://linkedin.com/company/digimarket',
-        socialFacebook: settings.socialFacebook || 'https://facebook.com/digimarket',
+        socialInstagram: settings.socialInstagram || 'https://instagram.com',
+        socialLinkedin: settings.socialLinkedin || 'https://linkedin.com',
+        socialFacebook: settings.socialFacebook || 'https://facebook.com',
         footerCopyright: settings.footerCopyright || `© ${new Date().getFullYear()} DigiMarket Digital Agency. All rights reserved.`,
       });
     }
@@ -343,7 +343,7 @@ export default function AdminSettings() {
                 className="admin-input"
                 value={form.socialInstagram}
                 onChange={handleChange}
-                placeholder="https://instagram.com/digimarket"
+                placeholder="https://instagram.com"
               />
             </div>
 
@@ -355,7 +355,7 @@ export default function AdminSettings() {
                 className="admin-input"
                 value={form.socialLinkedin}
                 onChange={handleChange}
-                placeholder="https://linkedin.com/company/digimarket"
+                placeholder="https://linkedin.com"
               />
             </div>
 
@@ -367,7 +367,7 @@ export default function AdminSettings() {
                 className="admin-input"
                 value={form.socialFacebook}
                 onChange={handleChange}
-                placeholder="https://facebook.com/digimarket"
+                placeholder="https://facebook.com"
               />
             </div>
           </div>

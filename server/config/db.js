@@ -62,16 +62,16 @@ export const autoSeed = async () => {
         businessDescription:
           'DigiMarket is a premier digital engineering and growth agency, helping businesses across India and the GCC with web development, digital marketing, cloud infrastructure, and branding.',
         contactEmail: 'hello@digimarket.in',
-        contactPhone: '+91 756 1042 221',
-        contactPhoneRaw: '+917561042221',
-        whatsappNumber: '+917561042221',
+        contactPhone: '+91 98765 43210',
+        contactPhoneRaw: '+919876543210',
+        whatsappNumber: '+919876543210',
         whatsappMessage: 'Hi DigiMarket, I would like to discuss a project.',
         address: 'Kuthuparamba, Kannur, Kerala, India',
         location: 'Kuthuparamba, Kannur, Kerala',
         businessHours: 'Mon – Sat: 9:00 AM – 7:00 PM IST',
-        socialInstagram: 'https://instagram.com/digimarket',
-        socialLinkedin: 'https://linkedin.com/company/digimarket',
-        socialFacebook: 'https://facebook.com/digimarket',
+        socialInstagram: 'https://instagram.com',
+        socialLinkedin: 'https://linkedin.com',
+        socialFacebook: 'https://facebook.com',
         footerCopyright: '© 2026 DigiMarket Digital Agency. All rights reserved.',
       });
       await defaultSettings.save();

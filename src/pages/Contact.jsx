@@ -311,7 +311,7 @@ export default function Contact() {
                     value={form.phone}
                     onChange={handleChange}
                     className={`form-input${errors.phone ? ' error' : ''}`}
-                    placeholder="+91 756 1042 221"
+                    placeholder="+91 98765 43210"
                     required
                   />
                   {errors.phone && <span className="form-error">⚠ {errors.phone}</span>}
