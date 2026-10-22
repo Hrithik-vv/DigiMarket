@@ -1,0 +1,406 @@
+/* ============================================================
+   loreD DIGITAL AGENCY — GLOBAL DESIGN SYSTEM & LAYOUT
+   Modern, Clean, Editorial Agency System
+   Alternating Dark / Light / Off-White Rhythm
+   ============================================================ */
+
+:root {
+  /* ─── Color Palette ─── */
+  /* Primary Dark */
+  --clr-dark: #0f1118;
+  --clr-dark-surface: #171a24;
+  --clr-dark-card: #1c202d;
+  --clr-dark-border: rgba(255, 255, 255, 0.09);
+
+  /* Primary Light & Neutrals */
+  --clr-light: #ffffff;
+  --clr-light-alt: #f6f7fa;
+  --clr-light-surface: #ffffff;
+  --clr-light-card: #ffffff;
+  --clr-light-border: #e3e6ed;
+  --clr-light-muted: #f0f2f7;
+
+  /* loreD Signature Accent */
+  --clr-accent: #ff451a;
+  --clr-accent-hover: #ff5933;
+  --clr-accent-soft: rgba(255, 69, 26, 0.08);
+  --clr-accent-border: rgba(255, 69, 26, 0.25);
+  --clr-accent-glow: rgba(255, 69, 26, 0.22);
+
+  /* Typography Colors */
+  --clr-heading-dark: #0f1118;
+  --clr-body-dark: #4b5262;
+  --clr-muted-dark: #71788a;
+
+  --clr-heading-light: #ffffff;
+  --clr-body-light: #c8cbd6;
+  --clr-muted-light: #8e94a5;
+
+  /* ─── Typography ─── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-sans);
+
+  /* ─── Layout & Sizing (Section 38 & 39) ─── */
+  --container-max: 1320px;
+  --section-pad: 100px 0;
+  --nav-h: 80px;
+
+  /* ─── Radii ─── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* ─── Shadows ─── */
+  --shadow-sm: 0 2px 8px rgba(15, 17, 24, 0.04);
+  --shadow-md: 0 10px 30px rgba(15, 17, 24, 0.07);
+  --shadow-lg: 0 20px 50px rgba(15, 17, 24, 0.12);
+  --shadow-dark: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  /* ─── Transitions ─── */
+  --ease-fast: 150ms ease;
+  --ease-base: 250ms ease;
+  --ease-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--clr-light);
+  color: var(--clr-body-dark);
+  line-height: 1.65;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--ease-fast);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ─── Global Responsive Centered Container (Section 38 & 39) ─── */
+.container {
+  width: min(100% - 48px, 1320px);
+  margin-inline: auto;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+}
+
+/* ─── Full Width Sections (Section 39) ─── */
+.section {
+  width: 100%;
+  padding: var(--section-pad);
+  position: relative;
+  background-color: var(--clr-light);
+  color: var(--clr-body-dark);
+}
+
+.section--alt {
+  background-color: var(--clr-light-alt);
+}
+
+.section--dark {
+  background-color: var(--clr-dark);
+  color: var(--clr-body-light);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--clr-heading-light);
+}
+
+.section--dark p {
+  color: var(--clr-body-light);
+}
+
+/* ─── Typography & Headings (Section 42) ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--clr-heading-dark);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 650;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.text-accent {
+  color: var(--clr-accent) !important;
+}
+
+/* ─── Eyebrow / Badges ─── */
+.badge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  margin-bottom: 18px;
+}
+
+.badge-eyebrow--pill {
+  padding: 5px 14px;
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
+  border-radius: var(--radius-full);
+}
+
+.badge-eyebrow--white {
+  color: #ff6842;
+}
+
+/* ─── Section Header ─── */
+.section-head {
+  max-width: 760px;
+  margin-bottom: 56px;
+}
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.section-head h2 {
+  margin-bottom: 16px;
+}
+.section-head p {
+  font-size: 1.15rem;
+  color: var(--clr-muted-dark);
+  line-height: 1.65;
+}
+.section--dark .section-head p {
+  color: var(--clr-muted-light);
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all var(--ease-base);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--clr-accent);
+  color: #ffffff;
+  border: 1px solid var(--clr-accent);
+  box-shadow: 0 4px 18px var(--clr-accent-glow);
+}
+.btn-primary:hover {
+  background-color: var(--clr-accent-hover);
+  border-color: var(--clr-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--clr-accent-glow);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: inherit;
+  border: 1.5px solid currentColor;
+}
+.btn-secondary:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background-color: var(--clr-dark);
+  color: #ffffff;
+  border: 1px solid var(--clr-dark);
+}
+.btn-dark:hover {
+  background-color: #222635;
+  border-color: #222635;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+  color: #ffffff;
+  border: 1px solid #25d366;
+}
+.btn-whatsapp:hover {
+  background-color: #20ba59;
+  border-color: #20ba59;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* ─── Breadcrumbs ─── */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--clr-muted-dark);
+  margin-bottom: 24px;
+}
+.breadcrumbs a {
+  color: inherit;
+  transition: color var(--ease-fast);
+}
+.breadcrumbs a:hover {
+  color: var(--clr-accent);
+}
+.breadcrumbs-sep {
+  opacity: 0.4;
+  font-size: 0.75rem;
+}
+.breadcrumbs-current {
+  color: var(--clr-heading-dark);
+  font-weight: 600;
+}
+.section--dark .breadcrumbs {
+  color: var(--clr-muted-light);
+}
+.section--dark .breadcrumbs-current {
+  color: var(--clr-heading-light);
+}
+
+/* ─── Cards & Editorial Surfaces (Section 43) ─── */
+.agency-card {
+  background-color: var(--clr-light-card);
+  border: 1px solid var(--clr-light-border);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  transition: all var(--ease-smooth);
+}
+.agency-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: #d0d4de;
+}
+
+.section--dark .agency-card {
+  background-color: var(--clr-dark-card);
+  border-color: var(--clr-dark-border);
+}
+.section--dark .agency-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-dark);
+}
+
+/* ─── Responsive Grids ─── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-pad: 80px 0;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 64px 0;
+    --nav-h: 72px;
+  }
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

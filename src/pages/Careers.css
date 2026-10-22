@@ -1,0 +1,118 @@
+/* ============================================================
+   loreD CAREERS STYLES
+   ============================================================ */
+
+.careers-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.careers-hero {
+  padding: 80px 0 90px;
+  background: radial-gradient(circle at 85% 30%, rgba(255, 69, 26, 0.12) 0%, #0f1118 70%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.careers-hero__title {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.careers-hero__subtitle {
+  font-size: 1.15rem;
+  color: #c8cbd6;
+  max-width: 720px;
+  line-height: 1.75;
+}
+
+.careers-culture-card {
+  padding: 36px 30px;
+}
+.careers-culture-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 14px;
+}
+.careers-culture-card p {
+  color: var(--clr-body-dark);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.careers-openings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.career-role-card {
+  padding: 36px;
+}
+
+.career-role-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.career-role-dept {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.career-role-header h3 {
+  font-size: 1.45rem;
+  margin-bottom: 8px;
+}
+
+.career-role-meta {
+  font-size: 0.88rem;
+  color: var(--clr-muted-dark);
+}
+
+.career-role-desc {
+  font-size: 1rem;
+  color: var(--clr-body-dark);
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+.careers-general-card {
+  text-align: center;
+  padding: 60px 40px;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.careers-cta-section {
+  padding: 90px 0;
+  text-align: center;
+}
+.careers-cta-section__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+.careers-cta-section__inner h2 {
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.careers-cta-section__inner p {
+  font-size: 1.15rem;
+  color: #c8cbd6;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .career-role-header {
+    flex-direction: column;
+  }
+}

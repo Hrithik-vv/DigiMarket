@@ -1,0 +1,202 @@
+/* ============================================================
+   loreD ABOUT US STYLES
+   ============================================================ */
+
+.about-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.about-hero {
+  padding: 80px 0 90px;
+  background: radial-gradient(circle at 85% 30%, rgba(255, 69, 26, 0.12) 0%, #0f1118 70%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-hero__title {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.about-hero__subtitle {
+  font-size: 1.2rem;
+  color: #c8cbd6;
+  max-width: 780px;
+  line-height: 1.75;
+}
+
+.about-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-story__media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-light-border);
+}
+.about-story__img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.about-story__content h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  margin-bottom: 20px;
+}
+.about-story__content p {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.about-cap-card {
+  padding: 32px 24px;
+}
+.about-cap-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 12px;
+}
+.about-cap-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+.about-cap-card p {
+  font-size: 0.95rem;
+  color: var(--clr-body-dark);
+  line-height: 1.65;
+}
+
+.about-philosophy-content h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  margin-bottom: 18px;
+}
+.about-lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--clr-heading-dark);
+  margin-bottom: 24px;
+}
+
+.about-values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 3px solid var(--clr-accent);
+  padding-left: 20px;
+}
+
+.about-value-item {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.about-value-item strong {
+  color: var(--clr-heading-dark);
+}
+
+.about-why-card {
+  padding: 40px;
+}
+.about-why-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.about-why-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.about-why-list li {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.about-why-list strong {
+  color: var(--clr-heading-dark);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.about-loc-card, .about-gcc-card {
+  padding: 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-loc-card h3, .about-gcc-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+.about-loc-card p, .about-gcc-card p {
+  color: var(--clr-body-dark);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.about-loc-details {
+  background-color: var(--clr-light-alt);
+  border: 1px solid var(--clr-light-border);
+  padding: 20px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  margin-top: auto;
+}
+.about-loc-details p {
+  margin: 0;
+}
+
+.about-region-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.about-region-pill {
+  padding: 10px 16px;
+  background-color: var(--clr-light-alt);
+  border: 1px solid var(--clr-light-border);
+  border-radius: var(--radius-xs);
+  font-size: 0.9rem;
+  color: var(--clr-heading-dark);
+}
+
+.about-cta-section {
+  padding: 90px 0;
+  text-align: center;
+}
+.about-cta-section__inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+.about-cta-section__inner h2 {
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.about-cta-section__inner p {
+  font-size: 1.15rem;
+  color: #c8cbd6;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1024px) {
+  .about-two-col {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

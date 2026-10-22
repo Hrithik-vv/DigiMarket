@@ -1,0 +1,84 @@
+/* ============================================================
+   loreD CIRCULAR WHATSAPP FLOATING BUTTON
+   ============================================================ */
+
+.lored-wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+}
+
+.lored-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  position: relative;
+}
+
+.lored-wa-btn:hover {
+  background-color: #20ba59;
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+  color: #ffffff;
+}
+
+.lored-wa-icon {
+  width: 32px;
+  height: 32px;
+  fill: #ffffff;
+}
+
+/* Tooltip on Desktop */
+.lored-wa-tooltip {
+  position: absolute;
+  right: 72px;
+  background-color: #11131a;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(8px);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-sans);
+}
+
+.lored-wa-btn:hover .lored-wa-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+  .lored-wa-float {
+    bottom: 20px;
+    right: 20px;
+  }
+  .lored-wa-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .lored-wa-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .lored-wa-tooltip {
+    display: none; /* No tooltip on touch devices */
+  }
+}

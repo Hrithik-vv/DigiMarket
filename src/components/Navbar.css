@@ -1,0 +1,420 @@
+/* ============================================================
+   loreD CLEAN AGENCY HEADER & MEGA MENU STYLES
+   ============================================================ */
+
+.lored-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-h);
+  z-index: 1000;
+  background-color: #0f1118;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--ease-base);
+}
+
+.lored-header--scrolled {
+  background-color: rgba(15, 17, 24, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.lored-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: min(100% - 48px, 1320px);
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .lored-header__inner {
+    width: calc(100% - 48px);
+  }
+}
+@media (max-width: 768px) {
+  .lored-header__inner {
+    width: calc(100% - 32px);
+  }
+}
+
+/* ─── Brand Logo ─── */
+.lored-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.lored-logo__mark {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.04em;
+}
+
+.lored-logo__accent {
+  color: var(--clr-accent);
+}
+
+.lored-logo__sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8e94a5;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* ─── Desktop Nav ─── */
+.lored-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.lored-nav__link {
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 550;
+  color: #c8cbd6;
+  transition: color var(--ease-fast);
+  padding: 8px 0;
+  position: relative;
+}
+
+.lored-nav__link:hover {
+  color: #ffffff;
+}
+
+.lored-nav__link--active {
+  color: var(--clr-accent) !important;
+}
+
+.lored-nav__link--btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.lored-nav__arrow {
+  transition: transform var(--ease-base);
+  color: #8e94a5;
+}
+.lored-nav__arrow--open {
+  transform: rotate(180deg);
+  color: var(--clr-accent);
+}
+
+/* ─── 5-Column Mega Menu ─── */
+.lored-nav__item--mega {
+  position: relative;
+}
+
+.lored-mega {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  width: 100vw;
+  background-color: #12141d;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  animation: megaFade 0.2s var(--ease-smooth) forwards;
+  z-index: 999;
+}
+
+@keyframes megaFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lored-mega__container {
+  width: min(100% - 48px, 1320px);
+  margin-inline: auto;
+  padding: 40px 0 32px;
+}
+
+.lored-mega__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+
+.lored-mega__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.lored-mega__cat-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent);
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--ease-fast);
+}
+.lored-mega__cat-title:hover {
+  color: var(--clr-accent-hover);
+  border-bottom-color: var(--clr-accent);
+}
+
+.lored-mega__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lored-mega__item-link {
+  font-size: 0.9rem;
+  color: #a4a9b8;
+  transition: all var(--ease-fast);
+  line-height: 1.4;
+  display: block;
+}
+.lored-mega__item-link:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+.lored-mega__item-link--active {
+  color: var(--clr-accent);
+  font-weight: 600;
+}
+
+.lored-mega__footer {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #8e94a5;
+}
+
+.lored-mega__footer-text span {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.lored-mega__footer-cta {
+  color: var(--clr-accent);
+  font-weight: 600;
+  font-family: var(--font-display);
+  transition: color var(--ease-fast);
+}
+.lored-mega__footer-cta:hover {
+  color: var(--clr-accent-hover);
+  text-decoration: underline;
+}
+
+/* ─── Header CTA & Actions ─── */
+.lored-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lored-header__cta {
+  padding: 11px 24px;
+  font-size: 0.9rem;
+}
+
+.lored-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  padding: 0;
+  background: transparent;
+}
+.lored-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all var(--ease-base);
+}
+.lored-hamburger--active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.lored-hamburger--active span:nth-child(2) {
+  opacity: 0;
+}
+.lored-hamburger--active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ─── Mobile Menu Drawer ─── */
+.lored-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.lored-mobile__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.lored-mobile__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88%;
+  max-width: 420px;
+  height: 100%;
+  background-color: #12141d;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 24px 20px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+  animation: drawerSlide 0.3s var(--ease-smooth) forwards;
+}
+
+@keyframes drawerSlide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.lored-mobile__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+}
+
+.lored-mobile__close {
+  font-size: 1.3rem;
+  color: #8e94a5;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lored-mobile__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.lored-mobile__link {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.lored-mobile__link:hover {
+  color: var(--clr-accent);
+}
+
+.lored-mobile__accordion {
+  margin: 8px 0;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lored-mobile__accordion-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #8e94a5;
+  margin-bottom: 12px;
+}
+
+.lored-mobile__cat-group {
+  margin-bottom: 8px;
+}
+
+.lored-mobile__cat-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: left;
+}
+.lored-mobile__plus {
+  font-size: 1.2rem;
+  color: var(--clr-accent);
+}
+
+.lored-mobile__sublist {
+  padding-left: 12px;
+  border-left: 2px solid var(--clr-accent-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 6px 0 12px;
+}
+
+.lored-mobile__sublink {
+  font-size: 0.88rem;
+  color: #8e94a5;
+}
+.lored-mobile__sublink:hover {
+  color: var(--clr-accent);
+}
+
+.lored-mobile__sublink--cat {
+  color: var(--clr-accent);
+  font-weight: 600;
+}
+
+.lored-mobile__footer {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ─── Media Query for Navbar ─── */
+@media (max-width: 1080px) {
+  .lored-nav {
+    display: none;
+  }
+  .lored-header__cta {
+    display: none;
+  }
+  .lored-hamburger {
+    display: flex;
+  }
+}

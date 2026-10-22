@@ -1,0 +1,682 @@
+/* ============================================================
+   loreD HOMEPAGE REDESIGN STYLES
+   Editorial Agency Layout with Alternating Section Rhythm
+   ============================================================ */
+
+.lored-home-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ─── 1. Hero Section (Dark, Agency Visual) ─── */
+.home-hero {
+  padding: 120px 0 100px;
+  background: radial-gradient(circle at 85% 30%, rgba(255, 69, 26, 0.12) 0%, #0f1118 70%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.home-hero__inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.home-hero__heading {
+  font-size: clamp(2.5rem, 4.4vw, 4.1rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.12;
+  margin-bottom: 24px;
+}
+
+.home-hero__lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: #c8cbd6;
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 620px;
+}
+
+.home-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.home-hero__frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.home-hero__img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.home-hero__frame:hover .home-hero__img {
+  transform: scale(1.03);
+}
+
+.home-hero__floating-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background-color: rgba(15, 17, 24, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.home-hero__badge-origin {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-accent);
+  font-weight: 700;
+}
+.home-hero__floating-badge strong {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+/* ─── 2. Trust / Statistics Section (Section 14) ─── */
+.home-trust {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--clr-light-border);
+}
+
+.home-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.home-trust__stat-card {
+  text-align: center;
+  padding: 32px 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--clr-light-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--ease-base);
+}
+.home-trust__stat-card:hover {
+  transform: translateY(-3px);
+  border-color: #cdd2dc;
+}
+
+.home-trust__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.home-trust__label {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--clr-heading-dark);
+}
+
+/* ─── 3. About / Introduction Section (Section 15) ─── */
+.home-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.home-intro__media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--clr-light-border);
+}
+
+.home-intro__img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.home-intro__content h2 {
+  font-size: clamp(2rem, 3.4vw, 2.85rem);
+  margin-bottom: 20px;
+}
+
+.home-intro__p1 {
+  font-size: 1.15rem;
+  color: var(--clr-heading-dark);
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.home-intro__p2 {
+  font-size: 1.05rem;
+  color: var(--clr-body-dark);
+  line-height: 1.75;
+}
+
+/* ─── 4. Services Section (Section 16 & 17 - Large Editorial Blocks) ─── */
+.home-services__editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.home-service-block {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  align-items: center;
+  gap: 48px;
+  padding: 36px;
+}
+
+.home-service-block--reverse {
+  grid-template-columns: 1.25fr 1fr;
+}
+.home-service-block--reverse .home-service-block__media {
+  order: 2;
+}
+.home-service-block--reverse .home-service-block__content {
+  order: 1;
+}
+
+.home-service-block__media {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 320px;
+}
+.home-service-block__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.home-service-block:hover .home-service-block__media img {
+  transform: scale(1.04);
+}
+
+.home-service-block__idx {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--clr-accent);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.home-service-block__content h3 {
+  font-size: 1.85rem;
+  margin-bottom: 14px;
+}
+
+.home-service-block__content p {
+  font-size: 1.08rem;
+  color: var(--clr-body-dark);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.home-service-block__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.home-service-block__sublink {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  background-color: var(--clr-light-muted);
+  border: 1px solid var(--clr-light-border);
+  border-radius: var(--radius-xs);
+  color: var(--clr-heading-dark);
+  font-weight: 550;
+  transition: all var(--ease-fast);
+}
+.home-service-block__sublink:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+.home-service-block__cta {
+  align-self: flex-start;
+}
+
+/* ─── 5. Selected Work Section (Section 19) ─── */
+.home-work__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.home-work-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-work-card__media {
+  position: relative;
+  height: 290px;
+  overflow: hidden;
+}
+.home-work-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.home-work-card:hover .home-work-card__media img {
+  transform: scale(1.04);
+}
+
+.home-work-card__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15, 17, 24, 0.9);
+  padding: 6px 14px;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+.home-work-card__body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-work-card__meta {
+  font-size: 0.82rem;
+  color: var(--clr-muted-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.home-work-card__body h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.home-work-card__body p {
+  font-size: 0.98rem;
+  color: var(--clr-body-dark);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.home-work-card__services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.home-work-card__tag {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  background-color: var(--clr-light-alt);
+  border-radius: var(--radius-xs);
+  color: var(--clr-muted-dark);
+}
+
+.home-work-card__link {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: var(--clr-accent);
+}
+.home-work-card__link:hover {
+  text-decoration: underline;
+}
+
+/* ─── 6. Client Logos Section (Section 22) ─── */
+.home-clients__strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-clients__logo-pill {
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border: 1px solid var(--clr-light-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--clr-heading-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ─── 7. Why loreD Section (Section 56) ─── */
+.home-why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.home-why__card {
+  padding: 36px 30px;
+}
+
+.home-why__num {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--clr-accent);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.home-why__card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.home-why__card p {
+  font-size: 0.98rem;
+  color: var(--clr-body-dark);
+  line-height: 1.7;
+}
+
+/* ─── 8. Testimonials Section (Section 23) ─── */
+.home-testimonial-card {
+  padding: 56px 48px;
+  text-align: center;
+}
+
+.home-testimonial-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-weight: 500;
+  color: var(--clr-heading-dark);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.home-testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.home-testimonial-author strong {
+  font-size: 1.05rem;
+  color: var(--clr-heading-dark);
+}
+
+.home-testimonial-company {
+  font-size: 0.9rem;
+  color: var(--clr-muted-dark);
+}
+
+.home-testimonial-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.home-testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--clr-light-border);
+  transition: all var(--ease-fast);
+}
+
+.home-testimonial-dot--active {
+  background-color: var(--clr-accent);
+  width: 24px;
+  border-radius: 6px;
+}
+
+/* ─── 9. Blog Section (Section 58) ─── */
+.home-blog__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.home-blog-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-blog-card__media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+.home-blog-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.home-blog-card:hover .home-blog-card__media img {
+  transform: scale(1.04);
+}
+
+.home-blog-card__category {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 17, 24, 0.9);
+  padding: 4px 12px;
+  border-radius: var(--radius-xs);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+}
+
+.home-blog-card__body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-blog-card__meta {
+  font-size: 0.8rem;
+  color: var(--clr-muted-dark);
+  margin-bottom: 8px;
+}
+
+.home-blog-card__body h3 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+.home-blog-card__body h3 a {
+  color: var(--clr-heading-dark);
+}
+.home-blog-card__body h3 a:hover {
+  color: var(--clr-accent);
+}
+
+.home-blog-card__body p {
+  font-size: 0.92rem;
+  color: var(--clr-body-dark);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.home-blog-card__cta {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--clr-accent);
+}
+
+/* ─── 10. FAQ Section (Section 57) ─── */
+.home-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-faq__item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.home-faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--clr-heading-dark);
+  text-align: left;
+  transition: color var(--ease-fast);
+}
+.home-faq__question:hover {
+  color: var(--clr-accent);
+}
+
+.home-faq__symbol {
+  font-size: 1.4rem;
+  color: var(--clr-accent);
+  margin-left: 16px;
+  font-weight: 300;
+}
+
+.home-faq__answer {
+  padding: 0 24px 24px;
+  border-top: 1px solid var(--clr-light-border);
+  padding-top: 16px;
+}
+.home-faq__answer p {
+  font-size: 1.02rem;
+  color: var(--clr-body-dark);
+  line-height: 1.7;
+}
+
+/* ─── 11. Final Full-Width Dark CTA (Section 33) ─── */
+.home-cta {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.home-cta__inner {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.home-cta__inner h2 {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  color: #ffffff;
+  margin-bottom: 18px;
+  line-height: 1.18;
+}
+
+.home-cta__inner p {
+  font-size: 1.2rem;
+  color: #c8cbd6;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.home-cta__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── Responsive Adjustments (Section 40) ─── */
+@media (max-width: 1024px) {
+  .home-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .home-hero__media {
+    max-width: 600px;
+  }
+  .home-trust__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .home-service-block,
+  .home-service-block--reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .home-service-block--reverse .home-service-block__media {
+    order: 1;
+  }
+  .home-service-block--reverse .home-service-block__content {
+    order: 2;
+  }
+  .home-work__grid {
+    grid-template-columns: 1fr;
+  }
+  .home-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 80px 0 60px;
+  }
+  .home-hero__img {
+    height: 340px;
+  }
+  .home-trust__grid {
+    grid-template-columns: 1fr;
+  }
+  .home-why__grid {
+    grid-template-columns: 1fr;
+  }
+  .home-testimonial-card {
+    padding: 36px 20px;
+  }
+  .home-blog__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .home-cta {
+    padding: 70px 0;
+  }
+}
