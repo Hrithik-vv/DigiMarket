@@ -35,8 +35,12 @@ app.use(
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Static uploads serving
+// Serve static uploads
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
+
+// Serve Vite production build in production
+const distPath = path.join(__dirname, '../dist');
+app.use(express.static(distPath));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -55,6 +59,20 @@ app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/upload', uploadRoutes);
+
+// Catch-all route to serve React SPA (Home, Admin, etc.)
+app.get('*', (req, res, next) => {
+  // If request is for an unhandled API endpoint, let it fall through
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ success: false, message: 'API route not found' });
+  }
+  const indexPath = path.join(distPath, 'index.html');
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      next(err);
+    }
+  });
+});
 
 // Global Error Handler
 app.use((err, req, res, next) => {

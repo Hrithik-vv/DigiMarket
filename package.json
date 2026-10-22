@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "server": "node server/server.js",
+    "start": "node server/server.js",
     "seed": "node server/scripts/seed.js",
     "build": "vite build",
+    "render-build": "npm install && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
