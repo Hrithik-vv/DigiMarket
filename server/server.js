@@ -61,8 +61,8 @@ app.use('/api/stats', statsRoutes);
 app.use('/api/upload', uploadRoutes);
 
 // Catch-all route to serve React SPA (Home, Admin, etc.)
-app.get('*', (req, res, next) => {
-  // If request is for an unhandled API endpoint, let it fall through
+app.use((req, res, next) => {
+  // If request is for an unhandled API endpoint, return 404
   if (req.path.startsWith('/api')) {
     return res.status(404).json({ success: false, message: 'API route not found' });
   }
