@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FiMapPin, FiClock, FiBriefcase, FiAlertCircle } from 'react-icons/fi';
 import { CONTACT, SITE_NAME } from '../config/contact.config';
 import { useSettings } from '../context/SettingsContext';
 import './Careers.css';
@@ -46,6 +47,8 @@ const OPENINGS = [
 export default function Careers() {
   const [selectedRole, setSelectedRole] = useState(null);
   const [appSubmitted, setAppSubmitted] = useState(false);
+  const [appConsent, setAppConsent] = useState(false);
+  const [appError, setAppError] = useState('');
   const { settings } = useSettings();
   const brand = settings.siteName || SITE_NAME;
 
@@ -119,7 +122,17 @@ export default function Careers() {
                     <span className="career-role-dept">{role.department}</span>
                     <h3>{role.title}</h3>
                     <div className="career-role-meta">
-                      <span>📍 {role.location}</span> • <span>⏳ {role.type}</span> • <span>💼 {role.experience}</span>
+                      <span className="career-role-meta__item">
+                        <FiMapPin size={13} /> {role.location}
+                      </span>
+                      <span className="career-role-meta__dot">•</span>
+                      <span className="career-role-meta__item">
+                        <FiClock size={13} /> {role.type}
+                      </span>
+                      <span className="career-role-meta__dot">•</span>
+                      <span className="career-role-meta__item">
+                        <FiBriefcase size={13} /> {role.experience}
+                      </span>
                     </div>
                   </div>
                   <button
@@ -128,6 +141,7 @@ export default function Careers() {
                     onClick={() => {
                       setSelectedRole(role);
                       setAppSubmitted(false);
+                      setAppError('');
                       setTimeout(() => {
                         document.getElementById('application-box')?.scrollIntoView({ behavior: 'smooth' });
                       }, 100);
@@ -173,20 +187,30 @@ export default function Careers() {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    if (!appConsent) {
+                      setAppError('You must agree to the Privacy Policy to submit your application.');
+                      return;
+                    }
                     setAppSubmitted(true);
                   }}
                   style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}
                 >
                   <div className="form-group">
-                    <label className="form-label">Full Name *</label>
+                    <label className="form-label">
+                      Full Name <span className="req">*</span>
+                    </label>
                     <input type="text" className="form-input" required placeholder="Your full name" />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Email Address *</label>
+                    <label className="form-label">
+                      Email Address <span className="req">*</span>
+                    </label>
                     <input type="email" className="form-input" required placeholder="you@domain.com" />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Phone / WhatsApp *</label>
+                    <label className="form-label">
+                      Phone / WhatsApp <span className="req">*</span>
+                    </label>
                     <input type="tel" className="form-input" required placeholder="+91 98765 43210" />
                   </div>
                   <div className="form-group">
@@ -194,9 +218,41 @@ export default function Careers() {
                     <input type="url" className="form-input" placeholder="https://..." />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Brief Background & Key Projects *</label>
+                    <label className="form-label">
+                      Brief Background & Key Projects <span className="req">*</span>
+                    </label>
                     <textarea className="form-textarea" required placeholder="Tell us briefly about systems or products you've built..." rows={4} />
                   </div>
+
+                  {/* ── Mandatory Privacy Policy Consent Section ── */}
+                  <div className="form-consent-wrap">
+                    <label className="form-consent-label" htmlFor="career-privacy">
+                      <input
+                        id="career-privacy"
+                        type="checkbox"
+                        checked={appConsent}
+                        onChange={(e) => {
+                          setAppConsent(e.target.checked);
+                          if (e.target.checked) setAppError('');
+                        }}
+                        className="form-consent-checkbox"
+                        required
+                      />
+                      <span>
+                        I agree to the{' '}
+                        <Link to="/privacy-policy" target="_blank" className="form-consent-link">
+                          Privacy Policy
+                        </Link>{' '}
+                        and consent to the processing of my information. <span className="req">*</span>
+                      </span>
+                    </label>
+                    {appError && (
+                      <span className="form-error">
+                        <FiAlertCircle size={14} /> {appError}
+                      </span>
+                    )}
+                  </div>
+
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '8px' }}>
                     Submit Application →
                   </button>

@@ -193,13 +193,35 @@
   font-weight: 600;
 }
 
+.blog-card__link,
 .blog-card__read-link {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
   font-weight: 650;
   font-family: var(--font-display);
+  transition: all var(--ease-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
+.blog-card__link:hover,
 .blog-card__read-link:hover {
-  text-decoration: underline;
+  color: var(--clr-primary-hover);
+  transform: translateX(3px);
+}
+
+.blog-featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--clr-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all var(--ease-fast);
+}
+.blog-featured-cta:hover {
+  color: var(--clr-primary-hover);
+  transform: translateX(4px);
 }
 
 /* ─── Single Article Page ─── */

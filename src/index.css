@@ -20,12 +20,34 @@
   --clr-light-border: #e3e6ed;
   --clr-light-muted: #f0f2f7;
 
-  /* loreD Signature Accent */
+  /* ─── Brand Colors & System Shades ─── */
   --clr-accent: #ff451a;
   --clr-accent-hover: #ff5933;
   --clr-accent-soft: rgba(255, 69, 26, 0.08);
   --clr-accent-border: rgba(255, 69, 26, 0.25);
   --clr-accent-glow: rgba(255, 69, 26, 0.22);
+
+  /* Primary Brand Tokens */
+  --clr-primary: #ff451a;
+  --clr-primary-hover: #ff5933;
+  --clr-primary-active: #e03b14;
+  --clr-primary-light: rgba(255, 69, 26, 0.08);
+  --clr-primary-subtle: rgba(255, 69, 26, 0.04);
+  --clr-primary-border: rgba(255, 69, 26, 0.22);
+  --clr-primary-border-strong: rgba(255, 69, 26, 0.4);
+  --clr-primary-dark: #cc3714;
+  --clr-primary-glow: rgba(255, 69, 26, 0.25);
+
+  /* Secondary & Contrast Brand Tokens */
+  --clr-secondary: #0f1118;
+  --clr-secondary-hover: #171a24;
+  --clr-secondary-light: #f6f7fa;
+
+  /* Status Tokens */
+  --clr-status-live-bg: #ecfdf5;
+  --clr-status-live-text: #059669;
+  --clr-status-live-border: #a7f3d0;
+  --clr-status-live-dot: #10b981;
 
   /* Typography Colors */
   --clr-heading-dark: #0f1118;
@@ -248,7 +270,7 @@ p {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 30px;
+  padding: 13px 26px;
   border-radius: var(--radius-sm);
   font-family: var(--font-display);
   font-size: 0.94rem;
@@ -256,21 +278,32 @@ p {
   letter-spacing: 0.01em;
   transition: all var(--ease-base);
   cursor: pointer;
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  word-break: break-word;
 }
 
 .btn-primary {
-  background-color: var(--clr-accent);
+  background-color: var(--clr-primary);
   color: #ffffff;
-  border: 1px solid var(--clr-accent);
-  box-shadow: 0 4px 18px var(--clr-accent-glow);
+  border: 1px solid var(--clr-primary);
+  box-shadow: 0 4px 18px var(--clr-primary-glow);
 }
 .btn-primary:hover {
-  background-color: var(--clr-accent-hover);
-  border-color: var(--clr-accent-hover);
+  background-color: var(--clr-primary-hover);
+  border-color: var(--clr-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px var(--clr-accent-glow);
+  box-shadow: 0 8px 24px var(--clr-primary-glow);
   color: #ffffff;
+}
+.btn-primary:active {
+  background-color: var(--clr-primary-active);
+  transform: translateY(0);
+}
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--clr-accent-soft), 0 4px 18px var(--clr-primary-glow);
 }
 
 .btn-secondary {
@@ -279,21 +312,39 @@ p {
   border: 1.5px solid currentColor;
 }
 .btn-secondary:hover {
-  border-color: var(--clr-accent);
-  color: var(--clr-accent);
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+  background-color: var(--clr-primary-light);
   transform: translateY(-2px);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+.btn-secondary:focus-visible {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-accent-soft);
 }
 
 .btn-dark {
   background-color: var(--clr-dark);
   color: #ffffff;
-  border: 1px solid var(--clr-dark);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .btn-dark:hover {
-  background-color: #222635;
-  border-color: #222635;
+  background-color: #171a24;
+  border-color: var(--clr-primary);
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 69, 26, 0.18);
+}
+.btn-dark:active {
+  transform: translateY(0);
+}
+.btn-dark:focus-visible {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-accent-soft);
 }
 
 .btn-whatsapp {
@@ -351,7 +402,7 @@ p {
 .agency-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: #d0d4de;
+  border-color: var(--clr-primary-border);
 }
 
 .section--dark .agency-card {
@@ -359,7 +410,7 @@ p {
   border-color: var(--clr-dark-border);
 }
 .section--dark .agency-card:hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 69, 26, 0.35);
   box-shadow: var(--shadow-dark);
 }
 
@@ -404,3 +455,102 @@ p {
     gap: 24px;
   }
 }
+
+/* ─── Unified Brand Tag / Pill System ─── */
+.brand-pill,
+.category-pill,
+.service-tech-pill,
+.work-card__service-tag,
+.home-work-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-xs);
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
+  color: var(--clr-heading-dark);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  white-space: normal;
+  word-break: break-word;
+  transition: all var(--ease-fast);
+}
+
+.brand-pill:hover,
+.category-pill:hover,
+.service-tech-pill:hover,
+.work-card__service-tag:hover,
+.home-work-card__tag:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+/* ─── Required Indicator Standard ─── */
+.form-req,
+.req-indicator {
+  color: var(--clr-primary);
+  font-weight: 700;
+  margin-left: 3px;
+  display: inline-block;
+}
+
+/* ─── Privacy Policy Consent Section ─── */
+.form-consent-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.form-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: var(--clr-body-dark);
+  line-height: 1.55;
+  user-select: none;
+}
+
+.form-consent-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--clr-primary);
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--clr-light-border);
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast), background-color var(--ease-fast);
+}
+
+.form-consent-checkbox:hover {
+  border-color: var(--clr-primary-border);
+}
+
+.form-consent-checkbox:focus-visible {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+.form-consent-link {
+  color: var(--clr-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--ease-fast);
+}
+
+.form-consent-link:hover {
+  color: var(--clr-primary-dark);
+}
+

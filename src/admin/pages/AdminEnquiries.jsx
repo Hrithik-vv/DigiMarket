@@ -12,6 +12,7 @@ import {
   FiBriefcase,
   FiEye,
   FiRefreshCw,
+  FiAlertTriangle,
 } from 'react-icons/fi';
 
 export default function AdminEnquiries() {
@@ -448,7 +449,7 @@ export default function AdminEnquiries() {
                   margin: '0 auto 16px',
                 }}
               >
-                ⚠
+                <FiAlertTriangle size={24} color="#dc2626" />
               </div>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '8px' }}>Delete Enquiry?</h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem' }}>

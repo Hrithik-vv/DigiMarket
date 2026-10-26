@@ -111,7 +111,8 @@
 }
 .home-trust__stat-card:hover {
   transform: translateY(-3px);
-  border-color: #cdd2dc;
+  border-color: var(--clr-primary-border);
+  box-shadow: 0 10px 24px rgba(255, 69, 26, 0.08);
 }
 
 .home-trust__num {
@@ -121,6 +122,7 @@
   font-weight: 800;
   line-height: 1;
   margin-bottom: 8px;
+  color: var(--clr-primary);
 }
 
 .home-trust__label {
@@ -240,17 +242,18 @@
 
 .home-service-block__sublink {
   font-size: 0.85rem;
-  padding: 6px 12px;
-  background-color: var(--clr-light-muted);
-  border: 1px solid var(--clr-light-border);
+  padding: 6px 13px;
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
   border-radius: var(--radius-xs);
   color: var(--clr-heading-dark);
-  font-weight: 550;
+  font-weight: 600;
   transition: all var(--ease-fast);
 }
 .home-service-block__sublink:hover {
+  background-color: var(--clr-accent);
   border-color: var(--clr-accent);
-  color: var(--clr-accent);
+  color: #ffffff;
 }
 
 .home-service-block__cta {
@@ -335,10 +338,18 @@
 
 .home-work-card__tag {
   font-size: 0.78rem;
+  font-weight: 600;
   padding: 4px 10px;
-  background-color: var(--clr-light-alt);
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
   border-radius: var(--radius-xs);
-  color: var(--clr-muted-dark);
+  color: var(--clr-heading-dark);
+  transition: all var(--ease-fast);
+}
+
+.home-work-card__tag:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
 }
 
 .home-work-card__link {
@@ -371,6 +382,13 @@
   font-weight: 600;
   color: var(--clr-heading-dark);
   box-shadow: var(--shadow-sm);
+  transition: all var(--ease-fast);
+}
+.home-clients__logo-pill:hover {
+  border-color: var(--clr-primary-border);
+  color: var(--clr-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 69, 26, 0.08);
 }
 
 /* ─── 7. Why loreD Section (Section 56) ─── */
@@ -550,6 +568,10 @@
 .home-faq__item {
   padding: 0;
   overflow: hidden;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+.home-faq__item:hover {
+  border-color: var(--clr-primary-border);
 }
 
 .home-faq__question {
@@ -563,10 +585,11 @@
   font-weight: 650;
   color: var(--clr-heading-dark);
   text-align: left;
-  transition: color var(--ease-fast);
+  transition: color var(--ease-fast), background-color var(--ease-fast);
 }
 .home-faq__question:hover {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
+  background-color: var(--clr-primary-subtle);
 }
 
 .home-faq__symbol {

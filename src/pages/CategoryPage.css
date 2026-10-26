@@ -102,28 +102,36 @@
   border: 1px solid var(--clr-light-border);
   border-radius: var(--radius-xs);
   font-size: 0.95rem;
-  font-weight: 550;
+  font-weight: 600;
   color: var(--clr-heading-dark);
   transition: all var(--ease-fast);
 }
 .category-service-link-item:hover {
+  background-color: var(--clr-accent-soft);
   border-color: var(--clr-accent);
   color: var(--clr-accent);
   transform: translateX(4px);
 }
 .category-service-arrow {
   color: var(--clr-accent);
+  transition: transform var(--ease-fast);
+}
+.category-service-link-item:hover .category-service-arrow {
+  transform: translateX(3px);
 }
 
 .category-child-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
 }
 
 .category-child-card {
   display: flex;
   flex-direction: column;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
 }
 
 .category-child-card__num {
@@ -137,6 +145,8 @@
 .category-child-card h3 {
   font-size: 1.45rem;
   margin-bottom: 12px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .category-child-card p {
@@ -144,6 +154,7 @@
   font-size: 0.98rem;
   margin-bottom: 20px;
   line-height: 1.65;
+  overflow-wrap: break-word;
 }
 
 .category-child-card__benefits {
@@ -169,6 +180,48 @@
 .category-child-card__cta {
   margin-top: auto;
   align-self: flex-start;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--clr-accent);
+  color: var(--clr-accent);
+  background-color: transparent;
+  transition: all var(--ease-base);
+}
+
+.category-child-card__cta .btn-arrow {
+  transition: transform var(--ease-fast);
+  display: inline-block;
+}
+
+.category-child-card__cta:hover {
+  background-color: var(--clr-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--clr-accent-glow);
+}
+
+.category-child-card__cta:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .category-child-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-child-card {
+    padding: 28px 20px;
+  }
+  .category-child-card__cta {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .category-cta-section {

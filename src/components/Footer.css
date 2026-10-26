@@ -82,12 +82,18 @@
 .lored-footer-regions-pill {
   font-size: 0.82rem;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 69, 26, 0.06);
+  border: 1px solid var(--clr-primary-border);
   padding: 8px 16px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   display: inline-block;
   max-width: fit-content;
+  transition: all var(--ease-fast);
+}
+
+.lored-footer-regions-pill:hover {
+  background: var(--clr-primary-light);
+  border-color: var(--clr-primary-border-strong);
 }
 
 .lored-footer-title {

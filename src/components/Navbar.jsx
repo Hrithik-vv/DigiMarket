@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FiPhone } from 'react-icons/fi';
 import { AGENCY, CONTACT, SITE_NAME } from '../config/contact.config';
 import { useSettings } from '../context/SettingsContext';
 import { SERVICE_CATEGORIES } from '../data/servicesData';
@@ -353,8 +354,9 @@ export default function Navbar() {
               <a
                 href={`tel:${CONTACT.phoneRaw}`}
                 className="lored-mobile__tel"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
               >
-                📞 {CONTACT.phone}
+                <FiPhone size={14} /> <span>{CONTACT.phone}</span>
               </a>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { FiAlertCircle, FiLock, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { CONTACT, WHATSAPP_URL, SITE_NAME } from '../config/contact.config';
 import { useSettings } from '../context/SettingsContext';
 import { SERVICE_CATEGORIES } from '../data/servicesData';
@@ -39,6 +41,7 @@ const EMPTY = {
   budget: '',
   timeline: '',
   message: '',
+  privacyConsent: false,
   honeypot: '',
 };
 
@@ -48,6 +51,7 @@ const EMPTY_ERRORS = {
   phone: '',
   service: '',
   message: '',
+  privacyConsent: '',
 };
 
 export default function Contact() {
@@ -60,8 +64,8 @@ export default function Contact() {
   const brand = settings.siteName || SITE_NAME;
 
   function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -89,6 +93,10 @@ export default function Contact() {
     }
     if (form.message.trim().length < 10) {
       newErrors.message = 'Please provide a brief description of your project requirements.';
+      valid = false;
+    }
+    if (!form.privacyConsent) {
+      newErrors.privacyConsent = 'You must agree to the Privacy Policy to submit your project enquiry.';
       valid = false;
     }
 
@@ -194,28 +202,36 @@ export default function Contact() {
 
               <div className="contact-channel-list">
                 <div className="contact-channel-item">
-                  <span className="contact-channel-label">Phone</span>
+                  <span className="contact-channel-label">
+                    <FiPhone size={12} /> Phone
+                  </span>
                   <a href={`tel:${settings.contactPhoneRaw || CONTACT.phoneRaw}`} className="contact-channel-value">
                     {settings.contactPhone || CONTACT.phone}
                   </a>
                 </div>
 
                 <div className="contact-channel-item">
-                  <span className="contact-channel-label">WhatsApp</span>
+                  <span className="contact-channel-label">
+                    <FaWhatsapp size={13} style={{ color: '#25d366' }} /> WhatsApp
+                  </span>
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="contact-channel-value text-accent">
                     {settings.contactPhone || CONTACT.phone}
                   </a>
                 </div>
 
                 <div className="contact-channel-item">
-                  <span className="contact-channel-label">Email</span>
+                  <span className="contact-channel-label">
+                    <FiMail size={12} /> Email
+                  </span>
                   <a href={`mailto:${settings.contactEmail || CONTACT.email}`} className="contact-channel-value">
                     {settings.contactEmail || CONTACT.email}
                   </a>
                 </div>
 
                 <div className="contact-channel-item">
-                  <span className="contact-channel-label">Location</span>
+                  <span className="contact-channel-label">
+                    <FiMapPin size={12} /> Location
+                  </span>
                   <span className="contact-channel-value">
                     {settings.location || CONTACT.location}
                   </span>
@@ -263,7 +279,11 @@ export default function Contact() {
                     placeholder="Your name"
                     required
                   />
-                  {errors.name && <span className="form-error">⚠ {errors.name}</span>}
+                  {errors.name && (
+                    <span className="form-error">
+                      <FiAlertCircle size={14} /> {errors.name}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -297,7 +317,11 @@ export default function Contact() {
                     placeholder="you@company.com"
                     required
                   />
-                  {errors.email && <span className="form-error">⚠ {errors.email}</span>}
+                  {errors.email && (
+                    <span className="form-error">
+                      <FiAlertCircle size={14} /> {errors.email}
+                    </span>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -314,7 +338,11 @@ export default function Contact() {
                     placeholder="+91 98765 43210"
                     required
                   />
-                  {errors.phone && <span className="form-error">⚠ {errors.phone}</span>}
+                  {errors.phone && (
+                    <span className="form-error">
+                      <FiAlertCircle size={14} /> {errors.phone}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -344,7 +372,11 @@ export default function Contact() {
                     Multiple Services / Comprehensive Growth
                   </option>
                 </select>
-                {errors.service && <span className="form-error">⚠ {errors.service}</span>}
+                {errors.service && (
+                  <span className="form-error">
+                    <FiAlertCircle size={14} /> {errors.service}
+                  </span>
+                )}
               </div>
 
               <div className="form-row">
@@ -399,12 +431,43 @@ export default function Contact() {
                   required
                   rows={4}
                 />
-                {errors.message && <span className="form-error">⚠ {errors.message}</span>}
+                {errors.message && (
+                  <span className="form-error">
+                    <FiAlertCircle size={14} /> {errors.message}
+                  </span>
+                )}
+              </div>
+
+              {/* ── Mandatory Privacy Policy Consent Section ── */}
+              <div className="form-consent-wrap">
+                <label className="form-consent-label" htmlFor="contact-privacy">
+                  <input
+                    id="contact-privacy"
+                    type="checkbox"
+                    name="privacyConsent"
+                    checked={form.privacyConsent}
+                    onChange={handleChange}
+                    className="form-consent-checkbox"
+                    required
+                  />
+                  <span>
+                    I agree to the{' '}
+                    <Link to="/privacy-policy" target="_blank" className="form-consent-link">
+                      Privacy Policy
+                    </Link>{' '}
+                    and consent to the processing of my information. <span className="req">*</span>
+                  </span>
+                </label>
+                {errors.privacyConsent && (
+                  <span className="form-error">
+                    {errors.privacyConsent}
+                  </span>
+                )}
               </div>
 
               {status === 'error' && (
                 <div className="form-alert form-alert--error" role="alert">
-                  ⚠ {errorMessage}
+                  <FiAlertCircle size={18} /> {errorMessage}
                 </div>
               )}
 
@@ -417,7 +480,7 @@ export default function Contact() {
               </button>
 
               <p className="contact-confidential-note">
-                🔒 Your inquiry is kept strictly confidential. We never share client information.
+                <FiLock size={14} /> Your inquiry is kept strictly confidential. We never share client information.
               </p>
             </form>
           </div>

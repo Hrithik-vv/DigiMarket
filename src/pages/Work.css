@@ -136,16 +136,32 @@
 .work-card__service-tag {
   font-size: 0.8rem;
   padding: 5px 12px;
-  background-color: var(--clr-light-muted);
-  border: 1px solid var(--clr-light-border);
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
   border-radius: var(--radius-xs);
   color: var(--clr-heading-dark);
-  font-weight: 550;
+  font-weight: 600;
+  transition: all var(--ease-fast);
+}
+
+.work-card__service-tag:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
 }
 
 .work-card__cta {
   margin-top: auto;
   align-self: flex-start;
+  padding: 11px 22px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--ease-base);
+}
+.work-card__cta:hover {
+  background-color: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 16px var(--clr-primary-glow);
 }
 
 /* ─── Case Detail Styles ─── */
@@ -221,7 +237,15 @@
   text-align: center;
   background-color: var(--clr-light-alt);
   border: 1px solid var(--clr-light-border);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--ease-base);
+}
+
+.case-detail-result-item:hover {
+  background-color: #ffffff;
+  border-color: var(--clr-primary-border);
+  box-shadow: 0 8px 24px rgba(255, 69, 26, 0.08);
+  transform: translateY(-2px);
 }
 
 .case-detail-res-val {
@@ -230,6 +254,7 @@
   font-size: 2.4rem;
   font-weight: 800;
   margin-bottom: 6px;
+  color: var(--clr-primary);
 }
 
 .case-detail-res-label {

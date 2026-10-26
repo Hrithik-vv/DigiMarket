@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FiMapPin, FiPhone, FiMail } from 'react-icons/fi';
 import { CONTACT, WHATSAPP_URL, SITE_NAME } from '../config/contact.config';
 import { useSettings } from '../context/SettingsContext';
 import './About.css';
@@ -145,9 +146,31 @@ export default function About() {
               Our primary development and delivery office is located in Kuthuparamba, Kannur. We welcome regional clients for in-person strategy sessions and technical reviews.
             </p>
             <div className="about-loc-details">
-              <p>📍 <strong>{brand} Digital Agency</strong><br />{settings.address || CONTACT.address}</p>
-              <p>📞 <strong>Phone / WhatsApp:</strong> {settings.contactPhone || CONTACT.phone}</p>
-              <p>✉️ <strong>Inquiries:</strong> {settings.contactEmail || CONTACT.email}</p>
+              <div className="about-loc-line">
+                <FiMapPin size={16} className="about-loc-icon" />
+                <div>
+                  <strong>{brand} Digital Agency</strong><br />
+                  <span>{settings.address || CONTACT.address}</span>
+                </div>
+              </div>
+              <div className="about-loc-line">
+                <FiPhone size={16} className="about-loc-icon" />
+                <div>
+                  <strong>Phone / WhatsApp:</strong>{' '}
+                  <a href={`tel:${settings.contactPhoneRaw || CONTACT.phoneRaw}`} className="about-loc-link">
+                    {settings.contactPhone || CONTACT.phone}
+                  </a>
+                </div>
+              </div>
+              <div className="about-loc-line">
+                <FiMail size={16} className="about-loc-icon" />
+                <div>
+                  <strong>Inquiries:</strong>{' '}
+                  <a href={`mailto:${settings.contactEmail || CONTACT.email}`} className="about-loc-link">
+                    {settings.contactEmail || CONTACT.email}
+                  </a>
+                </div>
+              </div>
             </div>
             <a
               href={CONTACT.mapsUrl}

@@ -69,10 +69,13 @@ export default function AdminDashboard() {
             border: '1px solid #fecaca',
             borderRadius: '8px',
             color: '#b91c1c',
-            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
           }}
         >
-          ⚠ {error}
+          <FiAlertCircle size={16} style={{ flexShrink: 0 }} />
+          <span>{error}</span>
         </div>
       )}
 

@@ -11,6 +11,8 @@ import {
   FiCheckCircle,
   FiClock,
   FiStar,
+  FiAlertCircle,
+  FiAlertTriangle,
 } from 'react-icons/fi';
 
 const BLOG_CATEGORIES = [
@@ -368,9 +370,13 @@ export default function AdminBlogs() {
                       borderRadius: '8px',
                       color: '#b91c1c',
                       marginBottom: '18px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
-                    ⚠ {formError}
+                    <FiAlertCircle size={16} style={{ flexShrink: 0 }} />
+                    <span>{formError}</span>
                   </div>
                 )}
 
@@ -540,7 +546,7 @@ export default function AdminBlogs() {
                   margin: '0 auto 16px',
                 }}
               >
-                ⚠
+                <FiAlertTriangle size={24} color="#dc2626" />
               </div>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '8px' }}>Delete Article?</h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem' }}>

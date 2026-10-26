@@ -203,13 +203,15 @@
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--clr-heading-dark);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 4px;
 }
 
 .form-label .req {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
+  font-weight: 700;
   margin-left: 2px;
 }
 
@@ -238,16 +240,42 @@
 .form-select {
   height: 48px;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2371788a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-color: #ffffff;
+  /* Brand primary #ff451a encoded as %23ff451a with 2px stroke for crisp modern chevron */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ff451a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 16px;
-  padding-right: 40px;
+  padding-right: 42px;
+  font-weight: 500;
+}
+
+/* Dropdown native options: remove blue default styling where supported, use brand theme */
+.form-select option {
+  background-color: #ffffff;
+  color: var(--clr-heading-dark);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+}
+
+.form-select option:checked,
+.form-select option:hover {
+  background: var(--clr-primary-light);
+  color: var(--clr-primary-dark);
+}
+
+.form-select optgroup {
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--clr-muted-dark);
+  background-color: var(--clr-light-alt);
+  padding: 8px 10px;
 }
 
 .form-textarea {
   min-height: 124px;
   resize: vertical;
+  background-color: #ffffff;
 }
 
 .form-input::placeholder,
@@ -255,13 +283,13 @@
   color: #9aa1b2;
 }
 
-/* Focus States */
+/* Focus States following Brand Hierarchy */
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--clr-accent);
-  box-shadow: 0 0 0 3px var(--clr-accent-soft);
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3.5px var(--clr-primary-light);
   background-color: #ffffff;
 }
 

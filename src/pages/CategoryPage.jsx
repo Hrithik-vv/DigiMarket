@@ -128,8 +128,13 @@ export default function CategoryPage({ categoryData: propCategory }) {
                     ))}
                   </ul>
                 </div>
-                <Link to={srv.url} className="btn btn-secondary category-child-card__cta">
-                  View Full Service Details ({srv.title}) →
+                <Link
+                  to={srv.url}
+                  className="btn btn-secondary category-child-card__cta"
+                  title={`View Full Service Details for ${srv.title}`}
+                >
+                  <span>View Full Service Details</span>
+                  <span className="btn-arrow" aria-hidden="true">→</span>
                 </Link>
               </div>
             ))}

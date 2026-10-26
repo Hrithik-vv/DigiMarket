@@ -147,16 +147,36 @@
 .about-loc-details {
   background-color: var(--clr-light-alt);
   border: 1px solid var(--clr-light-border);
-  padding: 20px;
+  padding: 22px 20px;
   border-radius: var(--radius-xs);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
   font-size: 0.95rem;
   margin-top: auto;
 }
-.about-loc-details p {
-  margin: 0;
+
+.about-loc-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.about-loc-icon {
+  color: var(--clr-accent);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.about-loc-link {
+  color: var(--clr-heading-dark);
+  font-weight: 500;
+  transition: color var(--ease-fast);
+}
+
+.about-loc-link:hover {
+  color: var(--clr-accent);
 }
 
 .about-region-pills {

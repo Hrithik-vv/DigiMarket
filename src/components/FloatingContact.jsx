@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CONTACT, WHATSAPP_URL } from '../config/contact.config';
+import { FiMessageSquare, FiX, FiPhone, FiMail, FiSend } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import './FloatingContact.css';
 
 export default function FloatingContact() {
@@ -28,6 +30,7 @@ export default function FloatingContact() {
             className="lored-fab-item lored-fab-item--wa"
             role="menuitem"
           >
+            <FaWhatsapp style={{ fontSize: '1.05rem', flexShrink: 0 }} />
             <span>WhatsApp Us</span>
           </a>
           <a
@@ -35,6 +38,7 @@ export default function FloatingContact() {
             className="lored-fab-item"
             role="menuitem"
           >
+            <FiPhone style={{ fontSize: '1rem', flexShrink: 0, color: 'var(--clr-primary)' }} />
             <span>Call {CONTACT.phone}</span>
           </a>
           <a
@@ -42,6 +46,7 @@ export default function FloatingContact() {
             className="lored-fab-item"
             role="menuitem"
           >
+            <FiMail style={{ fontSize: '1rem', flexShrink: 0, color: 'var(--clr-primary)' }} />
             <span>Email Us</span>
           </a>
           <Link
@@ -50,6 +55,7 @@ export default function FloatingContact() {
             role="menuitem"
             onClick={() => setOpen(false)}
           >
+            <FiSend style={{ fontSize: '1rem', flexShrink: 0 }} />
             <span>Project Enquiry</span>
           </Link>
         </div>
@@ -62,7 +68,7 @@ export default function FloatingContact() {
         aria-label="Quick Contact Menu"
         aria-expanded={open}
       >
-        {open ? '✕' : '💬'}
+        {open ? <FiX size={22} /> : <FiMessageSquare size={22} />}
       </button>
     </div>
   );

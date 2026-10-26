@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useSettings } from '../../context/SettingsContext';
-import { FiLock, FiMail, FiArrowRight } from 'react-icons/fi';
+import { FiLock, FiMail, FiArrowRight, FiAlertCircle } from 'react-icons/fi';
 import '../admin.css';
 
 export default function AdminLogin() {
@@ -121,7 +121,7 @@ export default function AdminLogin() {
               gap: '8px',
             }}
           >
-            <span>⚠</span>
+            <FiAlertCircle size={16} style={{ flexShrink: 0 }} />
             <span>{error}</span>
           </div>
         )}

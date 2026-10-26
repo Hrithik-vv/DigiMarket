@@ -147,13 +147,19 @@
 
 .service-tech-pill {
   padding: 6px 14px;
-  background-color: var(--clr-light-alt);
-  border: 1px solid var(--clr-light-border);
+  background-color: var(--clr-accent-soft);
+  border: 1px solid var(--clr-accent-border);
   border-radius: var(--radius-xs);
   font-size: 0.85rem;
   font-family: var(--font-display);
   font-weight: 600;
   color: var(--clr-heading-dark);
+  transition: all var(--ease-fast);
+}
+
+.service-tech-pill:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
 }
 
 .service-deliverable-list {
@@ -173,19 +179,25 @@
   border-radius: var(--radius-xs);
   font-size: 0.98rem;
   color: var(--clr-heading-dark);
+  transition: all var(--ease-fast);
+}
+.service-deliverable-list li:hover {
+  background-color: var(--clr-primary-light);
+  border-color: var(--clr-primary-border);
+  transform: translateX(4px);
 }
 
 .service-num-badge {
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 800;
-  color: var(--clr-accent);
+  color: var(--clr-primary);
 }
 
 /* ─── Why loreD Box ─── */
 .service-why-box {
   padding: 48px;
-  border-left: 4px solid var(--clr-accent);
+  border-left: 4px solid var(--clr-primary);
 }
 
 .service-why-box h2 {
@@ -263,6 +275,10 @@
 .service-faq-item {
   padding: 0;
   overflow: hidden;
+  transition: border-color var(--ease-fast);
+}
+.service-faq-item:hover {
+  border-color: var(--clr-primary-border);
 }
 
 .service-faq-trigger {
@@ -276,10 +292,11 @@
   font-weight: 650;
   color: var(--clr-heading-dark);
   text-align: left;
-  transition: color var(--ease-fast);
+  transition: color var(--ease-fast), background-color var(--ease-fast);
 }
 .service-faq-trigger:hover {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
+  background-color: var(--clr-primary-subtle);
 }
 
 .service-faq-icon {

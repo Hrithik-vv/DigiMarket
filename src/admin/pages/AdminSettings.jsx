@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminLayout from '../components/AdminLayout';
 import { useAuth } from '../../context/AuthContext';
 import { useSettings } from '../../context/SettingsContext';
-import { FiSave, FiCheckCircle, FiGlobe, FiPhone, FiMail, FiShare2 } from 'react-icons/fi';
+import { FiSave, FiCheckCircle, FiGlobe, FiPhone, FiMail, FiShare2, FiAlertCircle } from 'react-icons/fi';
 
 export default function AdminSettings() {
   const { token } = useAuth();
@@ -134,10 +134,13 @@ export default function AdminSettings() {
             border: '1px solid #fecaca',
             borderRadius: '8px',
             color: '#b91c1c',
-            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
           }}
         >
-          ⚠ {errorMsg}
+          <FiAlertCircle size={16} style={{ flexShrink: 0 }} />
+          <span>{errorMsg}</span>
         </div>
       )}
 

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { FiPhone, FiSend } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { CONTACT, WHATSAPP_URL } from '../config/contact.config';
 
 export default function MobileBar() {
@@ -33,7 +35,8 @@ export default function MobileBar() {
           fontWeight: 600,
         }}
       >
-        <span>💬 WhatsApp</span>
+        <FaWhatsapp size={15} />
+        <span>WhatsApp</span>
       </a>
 
       <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255,255,255,0.1)' }} />
@@ -49,7 +52,8 @@ export default function MobileBar() {
           fontWeight: 600,
         }}
       >
-        <span>📞 Call</span>
+        <FiPhone size={14} />
+        <span>Call</span>
       </a>
 
       <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255,255,255,0.1)' }} />
@@ -65,7 +69,8 @@ export default function MobileBar() {
           fontWeight: 600,
         }}
       >
-        <span>✉️ Start Project</span>
+        <FiSend size={14} />
+        <span>Start Project</span>
       </Link>
     </div>
   );

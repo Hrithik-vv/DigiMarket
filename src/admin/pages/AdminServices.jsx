@@ -11,6 +11,8 @@ import {
   FiExternalLink,
   FiEye,
   FiLayers,
+  FiAlertCircle,
+  FiAlertTriangle,
 } from 'react-icons/fi';
 
 const CATEGORIES = [
@@ -304,10 +306,19 @@ export default function AdminServices() {
                         type="button"
                         onClick={() => handleToggleActive(srv._id)}
                         className={`admin-badge ${srv.isActive ? 'admin-badge--success' : 'admin-badge--warning'}`}
-                        style={{ cursor: 'pointer', border: 'none' }}
+                        style={{ cursor: 'pointer' }}
                         title="Click to toggle status"
                       >
-                        {srv.isActive ? 'Active (Live)' : 'Disabled'}
+                        <span
+                          style={{
+                            width: '6px',
+                            height: '6px',
+                            borderRadius: '50%',
+                            backgroundColor: 'currentColor',
+                            display: 'inline-block',
+                          }}
+                        />
+                        <span>{srv.isActive ? 'Active (Live)' : 'Disabled'}</span>
                       </button>
                     </td>
                     <td style={{ textAlign: 'right' }}>
@@ -368,9 +379,13 @@ export default function AdminServices() {
                       borderRadius: '8px',
                       color: '#b91c1c',
                       marginBottom: '18px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
                     }}
                   >
-                    ⚠ {formError}
+                    <FiAlertCircle size={16} style={{ flexShrink: 0 }} />
+                    <span>{formError}</span>
                   </div>
                 )}
 
@@ -536,7 +551,7 @@ export default function AdminServices() {
                   margin: '0 auto 16px',
                 }}
               >
-                ⚠
+                <FiAlertTriangle size={24} color="#dc2626" />
               </div>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '8px' }}>Delete Service?</h3>
               <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
