@@ -131,7 +131,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* ── Two Column Sections ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+      <div className="admin-dashboard-grid">
         {/* Recent Enquiries */}
         <div className="admin-card">
           <div className="admin-card__header">

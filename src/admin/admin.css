@@ -889,30 +889,686 @@
   }
 }
 
-/* ─── Responsive Adjustments ─── */
+/* ─── Blog Status + Featured Row ─── */
+.admin-blog-status-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Settings Save Row ─── */
+.admin-settings-save-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  margin-bottom: 40px;
+}
+
+.admin-settings-save-btn {
+  padding: 12px 28px;
+  font-size: 0.98rem;
+}
+
+/* ─── Form Grid (2 cols) ─── */
+.admin-form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ─── Filter / Search Bar ─── */
+.admin-filter-bar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-filter-bar__inputs {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-filter-bar__search {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-filter-bar__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.admin-filter-bar__search .admin-input {
+  padding-left: 36px;
+  height: 40px;
+}
+
+.admin-filter-bar__select {
+  height: 40px;
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.admin-filter-bar__count {
+  font-size: 0.88rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* ─── Dashboard Two-Column Grid ─── */
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE SYSTEM
+   Admin Panel — Clean, Touch-Friendly, Production-Ready
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hamburger Menu Button (hidden on desktop) ── */
+.admin-topbar__menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-shrink: 0;
+  padding: 0;
+  transition: background 0.15s ease;
+}
+
+.admin-topbar__menu-btn:hover {
+  background: #f1f5f9;
+}
+
+.admin-hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 20px;
+}
+
+.admin-hamburger-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #334155;
+  border-radius: 2px;
+}
+
+/* ── Mobile Overlay Backdrop ── */
+.admin-sidebar-overlay {
+  display: none;
+}
+
+/* ── Sidebar Close Button (hidden on desktop) ── */
+.admin-sidebar__close-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 8px;
+  color: #94a3b8;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-sidebar__close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* ════════════════════════════════════════
+   TABLET BREAKPOINT (max-width: 900px)
+   ════════════════════════════════════════ */
 @media (max-width: 900px) {
+
+  /* Layout: remove flex-row, stack vertically but use fixed sidebar drawer */
   .admin-app {
-    flex-direction: column;
-  }
-  .admin-sidebar {
-    width: 100%;
-    height: auto;
+    flex-direction: row; /* Keep row — sidebar is now a fixed drawer */
     position: relative;
   }
-  .admin-sidebar__nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 10px;
+
+  /* Sidebar becomes a fixed off-canvas drawer */
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 300;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
-  .admin-nav-item {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+
+  /* When sidebar is toggled open */
+  .admin-sidebar--open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
   }
+
+  /* Show overlay backdrop */
+  .admin-sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 299;
+    backdrop-filter: blur(2px);
+  }
+
+  /* Show close button inside sidebar on mobile */
+  .admin-sidebar__close-btn {
+    display: flex;
+  }
+
+  /* Main content takes full width */
+  .admin-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Show hamburger button */
+  .admin-topbar__menu-btn {
+    display: flex;
+  }
+
+  /* Topbar layout — compact */
+  .admin-topbar {
+    padding: 0 16px;
+    height: 58px;
+    gap: 12px;
+  }
+
+  .admin-topbar__title {
+    font-size: 1.1rem;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Content padding — tablet */
   .admin-content {
     padding: 20px 16px;
   }
+
+  /* Stats grid — 2 columns on tablet */
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* Dashboard 2-col grid → single column on tablet */
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Dashboard 2-col grid — single column */
+  .admin-content > div[style*="repeat(auto-fit, minmax(400px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Filter bars — wrap properly */
+  .admin-card > div[style*="display: flex"][style*="justify-content: space-between"] {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  /* Select dropdowns in filters */
+  .admin-select[style*="width: 180px"],
+  .admin-select[style*="width: 220px"] {
+    width: 100% !important;
+  }
+}
+
+
+/* ════════════════════════════════════════
+   MOBILE BREAKPOINT (max-width: 640px)
+   ════════════════════════════════════════ */
+@media (max-width: 640px) {
+
+  /* Topbar */
   .admin-topbar {
+    height: 54px;
     padding: 0 16px;
+    gap: 10px;
+  }
+
+  .admin-topbar__title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .admin-topbar__actions {
+    gap: 8px;
+  }
+
+  /* Shrink action buttons in header */
+  .admin-topbar__actions .admin-btn span {
+    display: none;
+  }
+
+  .admin-topbar__actions .admin-btn {
+    padding: 0 10px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  /* Content */
+  .admin-content {
+    padding: 16px;
+  }
+
+  /* Cards */
+  .admin-card {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
+
+  .admin-card__header {
+    margin-bottom: 14px;
+    gap: 8px;
+  }
+
+  .admin-card__title {
+    font-size: 1rem;
+  }
+
+  /* Stats — 1 column on small mobile */
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  /* Dashboard two-col → single column */
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .admin-stat-card {
+    padding: 16px;
+  }
+
+  .admin-stat-card__value {
+    font-size: 1.55rem;
+  }
+
+  .admin-stat-card__label {
+    font-size: 0.82rem;
+  }
+
+  .admin-stat-card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+
+  /* ── Filter Bar ── */
+  .admin-card[style*="padding: '16px 20px'"] {
+    padding: 14px 16px !important;
+  }
+
+  /* Search + filters: stack everything */
+  .admin-card div[style*="display: flex"][style*="gap: '16px'"] {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .admin-card div[style*="display: flex"][style*="gap: '12px'"] {
+    flex-direction: column;
+    gap: 8px !important;
+  }
+
+  /* Inputs in filter areas */
+  .admin-input[style*="height: '40px'"] {
+    height: 44px !important;
+  }
+
+  /* Filter bar class-based responsive */
+  .admin-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .admin-filter-bar__inputs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .admin-filter-bar__select {
+    width: 100%;
+  }
+
+  .admin-filter-bar__count {
+    text-align: right;
+  }
+
+  /* ── Table → Mobile Card Conversion ── */
+
+  /* For enquiries / blogs table — convert to stacked cards */
+  .admin-table-container {
+    overflow: visible;
+    border: none;
+    background: transparent;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table,
+  .admin-table tbody,
+  .admin-table tr,
+  .admin-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-table tr {
+    background: #ffffff;
+    border: 1px solid var(--admin-border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 14px 16px;
+    position: relative;
+  }
+
+  .admin-table tr:hover td {
+    background: transparent;
+  }
+
+  .admin-table td {
+    padding: 4px 0;
+    border-bottom: none;
+    font-size: 0.88rem;
+  }
+
+  .admin-table td[style*="text-align: right"] {
+    text-align: left !important;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .admin-table td div[style*="display: 'inline-flex'"],
+  .admin-table td > div[style*="display: inline-flex"] {
+    justify-content: flex-start !important;
+  }
+
+  /* Actions in table cards */
+  .admin-table td:last-child {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  /* Make action buttons touch-friendly */
+  .admin-btn--sm {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+  }
+
+  .admin-btn--compact {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+  }
+
+  /* ── Pagination ── */
+  .admin-pagination-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .admin-pagination-info {
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .admin-pagination-controls {
+    gap: 4px;
+  }
+
+  /* Hide "Previous" / "Next" text on mobile — keep only arrows */
+  .admin-page-btn > span:not(:only-child) {
+    display: none;
+  }
+
+  .admin-page-btn {
+    height: 36px;
+    min-width: 36px;
+    padding: 0 8px;
+    font-size: 0.82rem;
+  }
+
+  .admin-page-btn--num {
+    min-width: 36px;
+  }
+
+  /* ── Modals ── */
+  .admin-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .admin-modal {
+    max-width: 100% !important;
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+  }
+
+  .admin-modal--lg {
+    max-width: 100% !important;
+  }
+
+  .admin-modal__header {
+    padding: 16px 16px;
+  }
+
+  .admin-modal__title {
+    font-size: 1.05rem;
+  }
+
+  .admin-modal__body {
+    padding: 16px;
+  }
+
+  .admin-modal__footer {
+    padding: 14px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .admin-modal__footer .admin-btn {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  /* ── Form Grids → Single Column on Mobile ── */
+  div[style*="display: 'grid'"][style*="gridTemplateColumns: '1fr 1fr'"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="gridTemplateColumns: '1fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Status+featured row in blog form */
+  div[style*="display: 'flex'"][style*="gap: '24px'"][style*="alignItems: 'center'"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .admin-select[style*="width: '180px'"] {
+    width: 100% !important;
+  }
+
+  /* Class-based 2-col form grid → 1 col on mobile */
+  .admin-form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Settings save row → full width on mobile */
+  .admin-settings-save-row {
+    justify-content: stretch;
+    margin-bottom: 24px;
+  }
+
+  .admin-settings-save-btn {
+    width: 100%;
+    font-size: 0.92rem;
+  }
+
+  /* Blog status row stacks on mobile */
+  .admin-blog-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-blog-status-row .admin-select {
+    width: 100% !important;
+  }
+
+  /* ── Mobile Services List — enhance card layout ── */
+  .admin-service-mobile-card {
+    padding: 14px 16px;
+  }
+
+  .mobile-card-header {
+    gap: 8px;
+  }
+
+  .service-actions-group {
+    gap: 6px;
+  }
+
+  /* ── Empty State ── */
+  .admin-empty-state {
+    padding: 36px 16px;
+  }
+
+  /* ── General Button Sizing ── */
+  .admin-btn {
+    min-height: 44px;
+  }
+
+  .admin-btn--primary,
+  .admin-btn--secondary,
+  .admin-btn--danger {
+    padding: 10px 16px;
+  }
+}
+
+
+/* ════════════════════════════════════════
+   EXTRA SMALL MOBILE (max-width: 375px)
+   ════════════════════════════════════════ */
+@media (max-width: 375px) {
+
+  .admin-topbar__title {
+    font-size: 0.95rem;
+  }
+
+  .admin-content {
+    padding: 12px;
+  }
+
+  .admin-card {
+    padding: 14px 12px;
+  }
+
+  .admin-stat-card {
+    padding: 14px 12px;
+  }
+
+  .admin-stat-card__value {
+    font-size: 1.4rem;
+  }
+
+  .admin-pagination-bar {
+    padding: 10px 12px;
+  }
+
+  .admin-modal__header {
+    padding: 14px 12px;
+  }
+
+  .admin-modal__body {
+    padding: 14px 12px;
+  }
+
+  .admin-modal__footer {
+    padding: 12px;
+  }
+}
+
+
+/* ════════════════════════════════════════
+   TOUCH TARGET SAFETY (all mobile)
+   ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .admin-nav-item {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  .admin-btn-logout,
+  .admin-btn-site {
+    min-height: 44px;
+  }
+
+  /* Prevent horizontal overflow globally in admin */
+  .admin-app,
+  .admin-main,
+  .admin-content {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Ensure inputs don't overflow */
+  .admin-input,
+  .admin-select,
+  .admin-textarea {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 

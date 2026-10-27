@@ -221,31 +221,22 @@ export default function AdminServices() {
     >
       {/* ── Filters & Search ── */}
       <div className="admin-card" style={{ padding: '16px 20px', marginBottom: '20px' }}>
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '12px', flex: 1, minWidth: '280px' }}>
-            <div style={{ position: 'relative', flex: 1 }}>
-              <FiSearch
-                style={{
-                  position: 'absolute',
-                  left: '12px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: '#94a3b8',
-                }}
-              />
+        <div className="admin-filter-bar">
+          <div className="admin-filter-bar__inputs">
+            <div className="admin-filter-bar__search">
+              <FiSearch className="admin-filter-bar__search-icon" />
               <input
                 type="text"
                 placeholder="Search services by title or slug…"
                 className="admin-input"
-                style={{ paddingLeft: '36px', height: '40px' }}
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
               />
             </div>
 
             <select
-              className="admin-select"
-              style={{ width: '220px', height: '40px' }}
+              className="admin-select admin-filter-bar__select"
+              style={{ width: '220px' }}
               value={selectedCategory}
               onChange={(e) => handleCategoryChange(e.target.value)}
             >
@@ -258,7 +249,7 @@ export default function AdminServices() {
             </select>
           </div>
 
-          <div style={{ fontSize: '0.88rem', color: '#64748b' }}>
+          <div className="admin-filter-bar__count">
             Showing <strong>{filtered.length > 0 ? `${startIndex + 1}–${Math.min(startIndex + itemsPerPage, filtered.length)}` : 0}</strong> of <strong>{filtered.length}</strong> services
           </div>
         </div>
@@ -486,7 +477,7 @@ export default function AdminServices() {
                   </div>
                 )}
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="admin-form-grid-2">
                   <div className="admin-form-group">
                     <label className="admin-form-label">Service Title *</label>
                     <input
@@ -515,7 +506,7 @@ export default function AdminServices() {
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="admin-form-grid-2">
                   <div className="admin-form-group">
                     <label className="admin-form-label">URL Slug (e.g. website-development-company)</label>
                     <input
@@ -572,7 +563,7 @@ export default function AdminServices() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="admin-form-grid-2">
                   <div className="admin-form-group">
                     <label className="admin-form-label">SEO Meta Title</label>
                     <input

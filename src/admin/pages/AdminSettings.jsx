@@ -156,7 +156,7 @@ export default function AdminSettings() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="admin-form-grid-2" style={{ gap: '20px' }}>
             <div className="admin-form-group">
               <label className="admin-form-label">Website Name (Primary Brand)</label>
               <input
@@ -287,7 +287,7 @@ export default function AdminSettings() {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="admin-form-grid-2" style={{ gap: '20px' }}>
             <div className="admin-form-group">
               <label className="admin-form-label">Office Address (Full)</label>
               <input
@@ -388,11 +388,10 @@ export default function AdminSettings() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '12px', marginBottom: '40px' }}>
+        <div className="admin-settings-save-row">
           <button
             type="submit"
-            className="admin-btn admin-btn--primary"
-            style={{ padding: '12px 28px', fontSize: '0.98rem' }}
+            className="admin-btn admin-btn--primary admin-settings-save-btn"
             disabled={loading}
           >
             <FiSave size={16} />

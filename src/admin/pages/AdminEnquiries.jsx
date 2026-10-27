@@ -130,34 +130,21 @@ export default function AdminEnquiries() {
     >
       {/* ── Filters & Search ── */}
       <div className="admin-card" style={{ padding: '16px 20px', marginBottom: '20px' }}>
-        <form
-          onSubmit={handleSearchSubmit}
-          style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}
-        >
-          <div style={{ display: 'flex', gap: '12px', flex: 1, minWidth: '280px' }}>
-            <div style={{ position: 'relative', flex: 1 }}>
-              <FiSearch
-                style={{
-                  position: 'absolute',
-                  left: '12px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: '#94a3b8',
-                }}
-              />
+        <form onSubmit={handleSearchSubmit} className="admin-filter-bar">
+          <div className="admin-filter-bar__inputs">
+            <div className="admin-filter-bar__search">
+              <FiSearch className="admin-filter-bar__search-icon" />
               <input
                 type="text"
-                placeholder="Search by client name, email, phone, company, or message…"
+                placeholder="Search by name, email, phone, company…"
                 className="admin-input"
-                style={{ paddingLeft: '36px', height: '40px' }}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
 
             <select
-              className="admin-select"
-              style={{ width: '180px', height: '40px' }}
+              className="admin-select admin-filter-bar__select"
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
@@ -166,12 +153,12 @@ export default function AdminEnquiries() {
               <option value="read">Read Only</option>
             </select>
 
-            <button type="submit" className="admin-btn admin-btn--secondary" style={{ height: '40px' }}>
+            <button type="submit" className="admin-btn admin-btn--secondary" style={{ height: '40px', flexShrink: 0 }}>
               Search
             </button>
           </div>
 
-          <div style={{ fontSize: '0.88rem', color: '#64748b' }}>
+          <div className="admin-filter-bar__count">
             Unread: <strong style={{ color: unreadCount > 0 ? '#ef4444' : '#10b981' }}>{unreadCount}</strong>
           </div>
         </form>
