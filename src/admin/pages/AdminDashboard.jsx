@@ -218,35 +218,41 @@ export default function AdminDashboard() {
               <p style={{ fontSize: '0.88rem' }}>Create your first blog post to share insights.</p>
             </div>
           ) : (
-            <div className="admin-table-container">
-              <table className="admin-table">
+            <div className="admin-table-container" style={{ border: 'none' }}>
+              <table className="admin-table admin-recent-articles-table">
                 <thead>
                   <tr>
-                    <th>Article Title</th>
-                    <th>Category</th>
-                    <th>Status</th>
+                    <th style={{ width: '55%' }}>Article Title</th>
+                    <th style={{ width: '25%' }}>Category</th>
+                    <th style={{ width: '20%', textAlign: 'right' }}>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {stats.recentBlogs.map((b) => (
                     <tr key={b._id}>
                       <td>
-                        <div style={{ fontWeight: 600, maxWidth: '240px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <div
+                          className="service-title"
+                          title={b.title}
+                          style={{ maxWidth: '320px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                        >
                           {b.title}
                         </div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
+                        <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
                           Slug: /{b.slug}
                         </div>
                       </td>
                       <td>
-                        <span className="admin-badge admin-badge--info">{b.category}</span>
+                        <span className="admin-category-text">{b.category}</span>
                       </td>
-                      <td>
-                        {b.status === 'published' ? (
-                          <span className="admin-badge admin-badge--success">Published</span>
-                        ) : (
-                          <span className="admin-badge admin-badge--warning">Draft</span>
-                        )}
+                      <td style={{ textAlign: 'right' }}>
+                        <span
+                          className={`admin-status-tag ${
+                            b.status === 'published' ? 'admin-status-tag--published' : 'admin-status-tag--draft'
+                          }`}
+                        >
+                          {b.status === 'published' ? 'Published' : 'Draft'}
+                        </span>
                       </td>
                     </tr>
                   ))}

@@ -13,6 +13,8 @@ import {
   FiLayers,
   FiAlertCircle,
   FiAlertTriangle,
+  FiChevronLeft,
+  FiChevronRight,
 } from 'react-icons/fi';
 
 const CATEGORIES = [
@@ -43,6 +45,8 @@ export default function AdminServices() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [modalOpen, setModalOpen] = useState(false);
@@ -186,6 +190,21 @@ export default function AdminServices() {
     return matchesCat && matchesSearch;
   });
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (safeCurrentPage - 1) * itemsPerPage;
+  const paginatedServices = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+  const handleSearchChange = (val) => {
+    setSearch(val);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (val) => {
+    setSelectedCategory(val);
+    setCurrentPage(1);
+  };
+
   return (
     <AdminLayout
       title="Services Management"
@@ -220,7 +239,7 @@ export default function AdminServices() {
                 className="admin-input"
                 style={{ paddingLeft: '36px', height: '40px' }}
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
               />
             </div>
 
@@ -228,7 +247,7 @@ export default function AdminServices() {
               className="admin-select"
               style={{ width: '220px', height: '40px' }}
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={(e) => handleCategoryChange(e.target.value)}
             >
               <option value="all">All Categories ({services.length})</option>
               {CATEGORIES.map((cat) => (
@@ -240,13 +259,13 @@ export default function AdminServices() {
           </div>
 
           <div style={{ fontSize: '0.88rem', color: '#64748b' }}>
-            Showing <strong>{filtered.length}</strong> services
+            Showing <strong>{filtered.length > 0 ? `${startIndex + 1}–${Math.min(startIndex + itemsPerPage, filtered.length)}` : 0}</strong> of <strong>{filtered.length}</strong> services
           </div>
         </div>
       </div>
 
-      {/* ── Services Table ── */}
-      <div className="admin-card" style={{ padding: 0 }}>
+      {/* ── Services Table Card ── */}
+      <div className="admin-card admin-services-card" style={{ padding: 0 }}>
         {loading ? (
           <div className="admin-empty-state">
             <div className="admin-loading-spinner" />
@@ -259,95 +278,173 @@ export default function AdminServices() {
             <p style={{ fontSize: '0.88rem' }}>No services match your search criteria.</p>
           </div>
         ) : (
-          <div className="admin-table-container" style={{ border: 'none' }}>
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>Service Details</th>
-                  <th>Category</th>
-                  <th>Public URL</th>
-                  <th>Status</th>
-                  <th style={{ textAlign: 'right' }}>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.map((srv) => (
-                  <tr key={srv._id}>
-                    <td>
-                      <div style={{ fontWeight: 600, color: '#0f172a' }}>{srv.title}</div>
-                      <div style={{ fontSize: '0.8rem', color: '#64748b' }}>
-                        {srv.subtitle || srv.intro?.substring(0, 70) || 'No description provided'}
-                      </div>
-                    </td>
-                    <td>
-                      <span className="admin-badge admin-badge--info">
+          <>
+            {/* Desktop / Tablet Table View */}
+            <div className="admin-table-container admin-services-table-wrapper" style={{ border: 'none' }}>
+              <table className="admin-table admin-services-table">
+                <thead>
+                  <tr>
+                    <th className="col-service-details" style={{ width: '44%' }}>Service Details</th>
+                    <th className="col-category" style={{ width: '19%' }}>Category</th>
+                    <th className="col-url" style={{ width: '23%' }}>Public URL</th>
+                    <th className="col-actions" style={{ width: '14%', textAlign: 'right' }}>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {paginatedServices.map((srv) => (
+                    <tr key={srv._id} className="admin-service-row">
+                      <td className="col-service-details">
+                        <div className="service-details-cell">
+                          <span className="service-title" title={srv.title}>
+                            {srv.title}
+                          </span>
+                          <p className="service-desc" title={srv.subtitle || srv.intro || ''}>
+                            {srv.subtitle || srv.intro || 'No description provided'}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="col-category">
+                        <span className="admin-category-text" title={srv.categoryName || srv.category}>
+                          {srv.categoryName || srv.category}
+                        </span>
+                      </td>
+                      <td className="col-url">
+                        <a
+                          href={srv.url || `/${srv.slug}/`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="service-url-link"
+                          title={`/${srv.slug}/`}
+                        >
+                          <span className="service-url-text">{srv.slug}</span>
+                          <FiExternalLink size={13} className="service-url-icon" />
+                        </a>
+                      </td>
+                      <td className="col-actions" style={{ textAlign: 'right' }}>
+                        <div className="service-actions-group">
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEdit(srv)}
+                            className="admin-btn admin-btn--secondary admin-btn--compact"
+                            title="Edit Service"
+                          >
+                            <FiEdit2 size={13} />
+                            <span>Edit</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setDeleteId(srv._id)}
+                            className="admin-btn admin-btn--danger admin-btn--compact"
+                            title="Delete Service"
+                          >
+                            <FiTrash2 size={13} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Responsive Card/List Fallback */}
+            <div className="admin-services-mobile-list">
+              {paginatedServices.map((srv) => (
+                <div key={srv._id} className="admin-service-mobile-card">
+                  <div className="mobile-card-header">
+                    <div>
+                      <h4 className="service-title">{srv.title}</h4>
+                      <span className="admin-category-text" style={{ marginTop: '4px', display: 'inline-block' }}>
                         {srv.categoryName || srv.category}
                       </span>
-                    </td>
-                    <td>
-                      <a
-                        href={srv.url || `/${srv.slug}/`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          fontSize: '0.82rem',
-                          color: '#3b82f6',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '4px',
-                        }}
-                      >
-                        <span>{srv.slug}</span>
-                        <FiExternalLink size={12} />
-                      </a>
-                    </td>
-                    <td>
+                    </div>
+                    <div className="service-actions-group">
                       <button
                         type="button"
-                        onClick={() => handleToggleActive(srv._id)}
-                        className={`admin-badge ${srv.isActive ? 'admin-badge--success' : 'admin-badge--warning'}`}
-                        style={{ cursor: 'pointer' }}
-                        title="Click to toggle status"
+                        onClick={() => handleOpenEdit(srv)}
+                        className="admin-btn admin-btn--secondary admin-btn--compact"
+                        title="Edit Service"
                       >
-                        <span
-                          style={{
-                            width: '6px',
-                            height: '6px',
-                            borderRadius: '50%',
-                            backgroundColor: 'currentColor',
-                            display: 'inline-block',
-                          }}
-                        />
-                        <span>{srv.isActive ? 'Active (Live)' : 'Disabled'}</span>
+                        <FiEdit2 size={13} />
+                        <span>Edit</span>
                       </button>
-                    </td>
-                    <td style={{ textAlign: 'right' }}>
-                      <div style={{ display: 'inline-flex', gap: '8px' }}>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenEdit(srv)}
-                          className="admin-btn admin-btn--secondary admin-btn--sm"
-                          title="Edit Service"
-                        >
-                          <FiEdit2 size={13} />
-                          <span>Edit</span>
-                        </button>
+                      <button
+                        type="button"
+                        onClick={() => setDeleteId(srv._id)}
+                        className="admin-btn admin-btn--danger admin-btn--compact"
+                        title="Delete Service"
+                      >
+                        <FiTrash2 size={13} />
+                      </button>
+                    </div>
+                  </div>
 
-                        <button
-                          type="button"
-                          onClick={() => setDeleteId(srv._id)}
-                          className="admin-btn admin-btn--danger admin-btn--sm"
-                          title="Delete Service"
-                        >
-                          <FiTrash2 size={13} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                  <p className="service-desc" style={{ marginTop: '8px' }}>
+                    {srv.subtitle || srv.intro || 'No description provided'}
+                  </p>
+
+                  <div className="mobile-card-footer" style={{ marginTop: '10px' }}>
+                    <a
+                      href={srv.url || `/${srv.slug}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="service-url-link"
+                    >
+                      <span className="service-url-text">/{srv.slug}/</span>
+                      <FiExternalLink size={13} className="service-url-icon" />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Pagination Footer ── */}
+            <div className="admin-pagination-bar">
+              <div className="admin-pagination-info">
+                Page <strong>{safeCurrentPage}</strong> of <strong>{totalPages}</strong> ({filtered.length} total services)
+              </div>
+
+              <div className="admin-pagination-controls">
+                <button
+                  type="button"
+                  className="admin-page-btn"
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  disabled={safeCurrentPage === 1}
+                  aria-label="Previous page"
+                >
+                  <FiChevronLeft size={14} />
+                  <span>Previous</span>
+                </button>
+
+                <div className="admin-page-numbers">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                    <button
+                      key={pageNum}
+                      type="button"
+                      className={`admin-page-btn admin-page-btn--num ${
+                        pageNum === safeCurrentPage ? 'admin-page-btn--active' : ''
+                      }`}
+                      onClick={() => setCurrentPage(pageNum)}
+                    >
+                      {pageNum}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  className="admin-page-btn"
+                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  disabled={safeCurrentPage === totalPages}
+                  aria-label="Next page"
+                >
+                  <span>Next</span>
+                  <FiChevronRight size={14} />
+                </button>
+              </div>
+            </div>
+          </>
         )}
       </div>
 

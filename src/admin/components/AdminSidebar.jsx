@@ -27,7 +27,6 @@ export default function AdminSidebar() {
         <div className="admin-sidebar__logo">
           {settings.siteName || 'DigiMarket'} <span>Admin</span>
         </div>
-        <span className="admin-sidebar__badge">PRO</span>
       </div>
 
       <nav className="admin-sidebar__nav">

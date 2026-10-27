@@ -10,7 +10,6 @@ import {
   FiFileText,
   FiCheckCircle,
   FiClock,
-  FiStar,
   FiAlertCircle,
   FiAlertTriangle,
 } from 'react-icons/fi';
@@ -270,20 +269,15 @@ export default function AdminBlogs() {
                 {filtered.map((b) => (
                   <tr key={b._id}>
                     <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {b.isFeatured && (
-                          <span title="Featured Post" style={{ color: '#f59e0b' }}>
-                            <FiStar fill="#f59e0b" size={14} />
-                          </span>
-                        )}
-                        <span style={{ fontWeight: 600, color: '#0f172a' }}>{b.title}</span>
+                      <div>
+                        <span style={{ fontWeight: 650, color: '#0f172a', fontSize: '0.92rem' }}>{b.title}</span>
                       </div>
                       <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '2px' }}>
                         Public slug: /{b.slug}
                       </div>
                     </td>
                     <td>
-                      <span className="admin-badge admin-badge--info">{b.category}</span>
+                      <span className="admin-category-text">{b.category}</span>
                     </td>
                     <td>
                       <div style={{ fontSize: '0.86rem' }}>{b.author}</div>

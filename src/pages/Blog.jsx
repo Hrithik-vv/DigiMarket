@@ -51,9 +51,6 @@ export default function Blog() {
           p.category.toLowerCase().includes(activeCategory.toLowerCase())
         );
 
-  const featuredPost = filteredPosts.find((p) => p.isFeatured) || filteredPosts[0];
-  const regularPosts = filteredPosts.filter((p) => p.slug !== featuredPost?.slug);
-
   return (
     <main className="blog-page">
       {/* ── 1. Dark Hero Section ── */}
@@ -88,59 +85,53 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* ── 2. Featured Article & Grid (Light Alt Section) ── */}
-      <section className="section section--alt">
-        <div className="container">
-          {featuredPost && (
-            <article className="agency-card blog-featured-card">
-              <div className="blog-featured-media">
-                <img src={featuredPost.image} alt={featuredPost.title} loading="eager" />
-                <span className="blog-card__category">{featuredPost.category}</span>
-              </div>
-              <div className="blog-featured-content">
-                <div className="blog-card__meta">
-                  <span>{featuredPost.date}</span> • <span>{featuredPost.readTime}</span>
-                </div>
-                <h2>
-                  <Link to={`/blog/${featuredPost.slug}`}>{featuredPost.title}</Link>
-                </h2>
-                <p>{featuredPost.excerpt}</p>
-                <div className="blog-featured-footer">
-                  <span className="blog-card__author">{featuredPost.author}</span>
-                  <Link to={`/blog/${featuredPost.slug}`} className="blog-featured-cta">
-                    Read Full Article →
-                  </Link>
-                </div>
-              </div>
-            </article>
+      {/* ── 2. Blog Posts Grid (Light Alt Section) ── */}
+      <section className="section section--alt blog-listing-section">
+        <div className="container blog-container">
+          {filteredPosts.length === 0 ? (
+            <div className="blog-empty-state">
+              <p>No articles found in this category.</p>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setActiveCategory('All')}
+              >
+                View All Articles
+              </button>
+            </div>
+          ) : (
+            <div
+              className={`blog-grid ${
+                filteredPosts.length === 2 ? 'blog-grid--two-posts' : ''
+              } ${filteredPosts.length === 1 ? 'blog-grid--single-post' : ''}`}
+            >
+              {filteredPosts.map((post) => (
+                <article key={post._id || post.slug || post.id} className="agency-card blog-card">
+                  <div className="blog-card__media">
+                    <img src={post.image} alt={post.title} loading="lazy" />
+                    <span className="blog-card__category">{post.category}</span>
+                  </div>
+                  <div className="blog-card__body">
+                    <div className="blog-card__meta">
+                      <span>{post.date}</span>
+                      <span className="blog-card__meta-divider">•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 className="blog-card__title">
+                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h3>
+                    <p className="blog-card__excerpt">{post.excerpt}</p>
+                    <div className="blog-card__footer">
+                      <span className="blog-card__author">{post.author}</span>
+                      <Link to={`/blog/${post.slug}`} className="blog-card__link">
+                        Read →
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           )}
-
-          {/* Regular Posts Grid */}
-          <div className="grid-3" style={{ marginTop: '48px' }}>
-            {regularPosts.map((post) => (
-              <article key={post._id || post.slug} className="agency-card blog-card">
-                <div className="blog-card__media">
-                  <img src={post.image} alt={post.title} loading="lazy" />
-                  <span className="blog-card__category">{post.category}</span>
-                </div>
-                <div className="blog-card__body">
-                  <div className="blog-card__meta">
-                    <span>{post.date}</span> • <span>{post.readTime}</span>
-                  </div>
-                  <h3>
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                  </h3>
-                  <p>{post.excerpt}</p>
-                  <div className="blog-card__footer">
-                    <span className="blog-card__author">{post.author}</span>
-                    <Link to={`/blog/${post.slug}`} className="blog-card__link">
-                      Read →
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
     </main>
